@@ -4,22 +4,23 @@ var browserClients = {
 };
 
 var browserServer = http.createServer(function(request, response) {
-	browserClients[browserClients.num] = {};
-	var t = browserClients[browserClients.num];
+	var key = browserClients.num + request.headers.referer;
+	browserClients[key] = {};
+	var t = browserClients[key];
 	t.request = request;
 	t.response = response;
 	browserClients.num++;
-	console.log(browserClients.num)
 })
 var notifyServer = http.createServer(function(request, response) {
-	for(var i in browserClients){
+
+	for (var i in browserClients) {
 		var c = browserClients[i]
-		if(c.response){
+		if (c.response) {
+			console.log(i)
 			c.response.end("location.reload()");
 			delete browserClients[i];
 		}
-	} 
-	browserClients.num = 0;
+	}
 	response.end("success\n");
 })
 browserServer.listen(3391);
