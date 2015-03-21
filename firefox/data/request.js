@@ -4,7 +4,7 @@ function insertScript() {
 	script.async = true;
 	script.defer = true;
 	script.id = "livereload_3391"
-	script.src = "http://127.0.0.1:3391";
+	script.src = "http://127.0.0.1:3391/" + Math.random();
 	head.appendChild(script);
 	setTimeout(function() {
 		var s = document.getElementById("livereload_3391");
