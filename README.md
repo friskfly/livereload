@@ -1,0 +1,1 @@
+配合grunt-watch来实现源码修改页面自动刷新。因为现阶段在开发Firefox插件，就先实现了firefox插件版。
